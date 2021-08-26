@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ import br.org.generation.blogpessoal.repository.PostagemRepository;
 
 @RestController
 @RequestMapping("/postagens")
-@CrossOrigin(origins = "+", allowedHeaders = "*")//cabeçalho para backend
+@CrossOrigin(origins = "*", allowedHeaders = "*")//cabeçalho para backend
 public class PostagemController {
 
 	@Autowired
@@ -59,7 +60,7 @@ public class PostagemController {
 			return ResponseEntity.status(HttpStatus.CREATED).body(postagemRepository.save(postagem));
 	}
 	
-	@PostMapping
+	@PutMapping
 	public ResponseEntity<Postagem> putPostagem(@RequestBody Postagem postagem){
 			return ResponseEntity.status(HttpStatus.OK).body(postagemRepository.save(postagem));
 	}
